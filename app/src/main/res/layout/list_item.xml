@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <data>
+
+        <variable
+            name="data"
+            type="com.onnet.databinding.pojo.SingleDataItem" />
+        <variable
+            name="itemClickListener"
+            type="com.onnet.databinding.ListAdapter.ItemClickListener" />
+
+        <import type="com.onnet.databinding.binding.BindingUtils" />
+
+    </data>
+
+    <androidx.cardview.widget.CardView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/white"
+        android:layout_margin="6dp"
+        app:cardCornerRadius="16dp">
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:onClick="@{() ->  itemClickListener.onItemClicked(data)}">
+
+            <ImageView
+                android:id="@+id/iv_item"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                app:image_url="@{data.landscapeImage}"
+                android:contentDescription="@string/image" />
+            <TextView
+                android:id="@+id/tv_info"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:layout_marginStart="16dp"
+                android:text="@{data.title}"
+                android:hint="@string/text_from_url"/>
+
+        </LinearLayout>
+
+    </androidx.cardview.widget.CardView>
+</layout>
